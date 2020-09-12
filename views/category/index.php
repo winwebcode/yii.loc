@@ -122,15 +122,15 @@ use yii\helpers\Url;
                                     <?= Html::img("@web/images/home/{$hit->img}", ['alt'=> $hit->name]); ?>
                                     <h2><?=$hit->price;?></h2>
                                     <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]);?>"><?=$hit->name;?></a></p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <a href="<?= Url::to(['cart/add', 'id'=> $hit->id])?>" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
-                                <div class="product-overlay">
+                                <!--<div class="product-overlay">
                                     <div class="overlay-content">
-                                        <h2><?=$hit->price;?></h2>
-                                        <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]);?>"><?=$hit->name;?></a></p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <h2><?/*=$hit->price;*/?></h2>
+                                        <p><a href="<?/*= Url::to(['product/view', 'id' => $hit->id]);*/?>"><?/*=$hit->name;*/?></a></p>
+                                        <a href="<?/*= Url::to(['cart/add', 'id'=> $hit->id]);*/?>" data-id="<?/*= $hit->id*/?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                     </div>
-                                </div>
+                                </div>-->
                                 <?php if ($hit->new === '1') {
                                     echo Html::img("@web/images/home/new.png", ['alt'=> '', 'class' => 'new']);
                                 } ?>

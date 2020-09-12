@@ -5,6 +5,46 @@
  $('.catalog').dcAccordion({
 	 speed: 30
  });
+function clearCart() {
+	$.ajax({
+		url: '/cart/clear',
+		type: 'GET',
+		success: function (res) {
+			if (res === false) {
+				alert('Error');
+			}
+			showCart(res);
+		},
+		error: function () {
+			alert('Error');
+		}
+	});
+}
+ function showCart(cart) {
+ 	$('#cart .modal-body').html(cart);
+	 $('#cart').modal();
+ }
+
+ //add to cart button
+$('.add-to-cart').on('click', function (e) {
+	e.preventDefault();
+	var id = $(this).data('id');
+	$.ajax({
+		url: '/cart/add',
+		data: {id: id},
+		type: 'GET',
+		success: function (res) {
+			if (res === false) {
+				alert('Error');
+			}
+			//console.log(res);
+			showCart(res);
+		},
+		error: function () {
+			alert('Error');
+		}
+	});
+});
 
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
