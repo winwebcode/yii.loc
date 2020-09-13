@@ -5,6 +5,50 @@
  $('.catalog').dcAccordion({
 	 speed: 30
  });
+
+function getCart() {
+	$.ajax({
+		url: '/cart/show',
+		//data: {id: id},
+		type: 'GET',
+		success: function (res) {
+			if (res === false) {
+				alert('Error');
+			}
+			//console.log(res);
+			showCart(res);
+		},
+		error: function () {
+			alert('Error');
+		}
+	});
+}
+
+function showCart(cart) {
+	$('#cart .modal-body').html(cart);
+	$('#cart').modal();
+};
+
+$('#cart .modal-body').on('click', '.del-item', function() {
+	var id = $(this).data('id');
+	$.ajax({
+		url: '/cart/del-item',
+		data: {id: id},
+		type: 'GET',
+		success: function (res) {
+			if (res === false) {
+				alert('Error');
+			}
+			//console.log(res);
+			showCart(res);
+		},
+		error: function () {
+			alert('Error');
+		}
+	});
+});
+
+
 function clearCart() {
 	$.ajax({
 		url: '/cart/clear',
@@ -20,18 +64,16 @@ function clearCart() {
 		}
 	});
 }
- function showCart(cart) {
- 	$('#cart .modal-body').html(cart);
-	 $('#cart').modal();
- }
+
 
  //add to cart button
 $('.add-to-cart').on('click', function (e) {
 	e.preventDefault();
-	var id = $(this).data('id');
+	var id = $(this).data('id'),
+		qty = $('#qty').val();
 	$.ajax({
 		url: '/cart/add',
-		data: {id: id},
+		data: {id: id, qty: qty},
 		type: 'GET',
 		success: function (res) {
 			if (res === false) {

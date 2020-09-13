@@ -120,9 +120,9 @@ use yii\helpers\Url;
                             <div class="single-products">
                                 <div class="productinfo text-center">
                                     <?= Html::img("@web/images/home/{$hit->img}", ['alt'=> $hit->name]); ?>
-                                    <h2><?=$hit->price;?></h2>
-                                    <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]);?>"><?=$hit->name;?></a></p>
-                                    <a href="<?= Url::to(['cart/add', 'id'=> $hit->id])?>" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    <h2><?=$hit->price ;?></h2>
+                                    <p><a href="<?= Url::to(['product/view', 'id' => $hit->id]); ?>"><?=$hit->name; ?></a></p>
+                                    <a href="<?= Url::to(['cart/add', 'id'=> $hit->id]); ?>" data-id="<?= $hit->id; ?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <!--<div class="product-overlay">
                                     <div class="overlay-content">
