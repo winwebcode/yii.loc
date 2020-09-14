@@ -322,8 +322,8 @@ Modal::begin([
     'id' => 'cart',
     'size' => 'modal-lg',
     'header' => '<h2>Корзина</h2>',
-    'footer' => ' <button type="button" class="btn btn-secondary" data-dismiss="modal">Продолжить покупки</button>
-                  <button type="button" class="btn btn-success">Сделать заказ сейчас</button>
+    'footer' => '<button type="button" class="btn btn-secondary" data-dismiss="modal">Продолжить покупки</button>
+                  <a href="' . Url::to(['cart/view']) .'" class="btn btn-success">Сделать заказ сейчас</a>
                   <button type="button" class="btn btn-danger" onclick="clearCart();">Очистить корзину</button>',
 
     ]);

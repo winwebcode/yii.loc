@@ -4,6 +4,8 @@
 namespace app\models;
 
 use yii\db\ActiveRecord;
+use app\models\Order;
+use app\models\OrderItems;
 
 class Cart extends ActiveRecord
 {
