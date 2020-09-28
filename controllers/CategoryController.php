@@ -20,6 +20,7 @@ class CategoryController extends AppController
     {
         //$id = Yii::$app->request->get('id');
         $infoCategory = Category::findOne($id);
+        //если категория пустая
         if(empty($infoCategory)) {
             throw new \yii\web\HttpException(404, 'Категория не найдена.');
         }

@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\models;
 
+use app\modules\admin\models\OrderItems;
 use Yii;
 
 /**
@@ -20,17 +21,16 @@ use Yii;
  */
 class Order extends \yii\db\ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
     public static function tableName()
     {
         return 'order';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    public function getOrderItems()
+    {
+        return $this->hasMany(OrderItems::className(), ['order_id' => 'id']); //табл order_items (поле order_id) связана с табл Order (поле id)
+    }
+
     public function rules()
     {
         return [

@@ -29,6 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'qty',
             'sum',
             //'status',
+            [
+                    'attribute' => 'status',
+                    'value' => function($data) { //callback function
+                        if ($data->status === '0') {
+                            return '<span class="text-danger">Активен</span>';
+                        } else {
+                            return '<span class="text-success">Завершён</span>';
+                        }
+                    },
+                    'format' => 'html', //enable html
+            ],
             //'name',
             //'email:email',
             //'phone',
